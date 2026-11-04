@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.IO.IsolatedStorage;
 using UnityEngine;
 
@@ -9,6 +10,9 @@ public class CarHandler : MonoBehaviour
 
     [SerializeField]
     Transform gameModel;
+
+    [SerializeField]
+    ExplodeHandler explodeHandler;
     float accelerationMultiplier = 3;
     float brakesMultiplier = 15;
     float steeringMultiplier = 5;
@@ -16,22 +20,43 @@ public class CarHandler : MonoBehaviour
     float maxSteervelocity = 2;
     float maxForwardveocity = 30;
 
+    //Explode state
+    bool isExploded = false;
     Vector2 input = Vector2.zero;
+
+    bool isPlayer = true;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        isPlayer = CompareTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isExploded)
+            return;
         //Rotate car mdoel when turning
         gameModel.transform.rotation = Quaternion.Euler(0, rb.linearVelocity.x * 5, 0);
     }
 
     private void FixedUpdate()
     {
+
+        //Is exploded
+        if (isExploded)
+        {
+            //Apply drag
+            rb.linearDamping = rb.linearVelocity.z * 0.1f;
+            rb.linearDamping = Mathf.Clamp(rb.linearDamping, 1.5f, 10);
+
+            //Move towards center after the car has exploded
+            rb.MovePosition(Vector3.Lerp(transform.position, new Vector3(0, 0, transform.position.z), Time.deltaTime * 0.5f));
+
+            return;
+        }    
         //Applying Acceleration
         if (input.y > 0)
             Accelerate();
@@ -101,5 +126,52 @@ public class CarHandler : MonoBehaviour
         inputVector.Normalize();
 
         input = inputVector;
+    }
+
+    public void SetMaxSpeed(float newMaxSpeed)
+    {
+        maxForwardveocity = newMaxSpeed;
+    }
+
+    IEnumerator SlowDownTimeCO()
+    {
+        while (Time.timeScale > 0.2f)
+        {
+            Time.timeScale -= Time.deltaTime * 2;
+
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        while (Time.timeScale <= 1.0f)
+        {
+            Time.timeScale += Time.deltaTime;
+
+            yield return null;
+        }
+
+        Time.timeScale = 1.0f;
+    }
+
+    //Events
+    private void OnCollisionEnter(Collision collision)
+    {
+        //AI cars will only explode when they hit the player or a car part
+        if(!isPlayer)
+        {
+            if (collision.transform.root.CompareTag("Untagged"))
+                return;
+
+            if (collision.transform.root.CompareTag("CarAI"))
+                return;
+        }
+
+        Vector3 velocity = rb.linearVelocity;
+        explodeHandler.Explode(velocity * 45);
+
+        isExploded = true;
+
+        StartCoroutine(SlowDownTimeCO());
     }
 }

@@ -5,6 +5,15 @@ public class InputHandler : MonoBehaviour
 {
     [SerializeField]
     CarHandler carHandler;
+
+    private void Awake()
+    {
+        if (!CompareTag("Player"))
+        {
+            Destroy(this);
+            return;
+        }
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,6 +33,7 @@ public class InputHandler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Time.timeScale = 1.0f;
         }
 
     }
