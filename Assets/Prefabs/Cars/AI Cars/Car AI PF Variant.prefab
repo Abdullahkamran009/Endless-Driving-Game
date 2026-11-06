@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4290854240021460525, guid: fe49c812ff77093449516a1f03ba4b2d, type: 3}
+      propertyPath: carMeshRender
+      value: 
+      objectReference: {fileID: 8709399757067717935}
     - target: {fileID: 7794614834221191198, guid: fe49c812ff77093449516a1f03ba4b2d, type: 3}
       propertyPath: m_Name
       value: Car AI PF Variant
@@ -61,3 +65,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe49c812ff77093449516a1f03ba4b2d, type: 3}
+--- !u!23 &8709399757067717935 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8183722460911159852, guid: fe49c812ff77093449516a1f03ba4b2d, type: 3}
+  m_PrefabInstance: {fileID: 670030116454909699}
+  m_PrefabAsset: {fileID: 0}
