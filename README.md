@@ -4,7 +4,7 @@ A 3D endless driving game I made in Unity with C#. You drive down a road that ne
 
 I built this to get better at Unity and C#, mostly by working on the systems that make a game like this run.
 
-<img width="1909" height="956" alt="image" src="https://github.com/user-attachments/assets/f548b11f-df75-4932-88c5-f1d9dc050fc7" />
+<img width="1681" height="825" alt="image" src="https://github.com/user-attachments/assets/ea7e38fc-1794-4a21-a0b8-10957206fc06" />
 
 ## What's in it
 
