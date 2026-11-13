@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 
-public class EnldessLevelHandler : MonoBehaviour
+public class EndlessLevelHandler : MonoBehaviour
 {
     [SerializeField]
     GameObject[] sectionsPrefabs;
@@ -68,14 +68,14 @@ public class EnldessLevelHandler : MonoBehaviour
     {
         for(int i = 0; i <sections.Length; i++)
         {
-            //Check if the seciton is too far behind the car.
+            //Check if the section is too far behind the car.
             if (sections[i].transform.position.z - playerCarTransform.position.z < -sectionLength)
             {
                 //Store the position of the section and disable it
                 Vector3 lastSectionPostion = sections[i].transform.position;
                 sections[i].SetActive(false);
 
-                //Get new section and enagle it & move it forward
+                //Get new section and enable it & move it forward
                 sections[i] = GetRandomSectionFromPool();
 
                 //Move the new section into place and active it

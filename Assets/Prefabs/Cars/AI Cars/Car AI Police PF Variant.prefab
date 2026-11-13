@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5530619208752893232, guid: fe49c812ff77093449516a1f03ba4b2d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.061
       objectReference: {fileID: 0}
     - target: {fileID: 7730070622887930334, guid: fe49c812ff77093449516a1f03ba4b2d, type: 3}
       propertyPath: meshCollider

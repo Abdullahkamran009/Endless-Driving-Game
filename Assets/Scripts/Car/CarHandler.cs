@@ -36,7 +36,7 @@ public class CarHandler : MonoBehaviour
     float steeringMultiplier = 5;
 
     float maxSteervelocity = 2;
-    float maxForwardveocity = 30;
+    float maxForwardvelocity = 30;
     float carMaxSpeedPercentage = 0;
 
     //Explode state
@@ -73,7 +73,7 @@ public class CarHandler : MonoBehaviour
             return;
         }
 
-        //Rotate car mdoel when turning
+        //Rotate car model when turning
         gameModel.transform.rotation = Quaternion.Euler(0, rb.linearVelocity.x * 5, 0);
 
         UpdateCarAudio();
@@ -119,7 +119,7 @@ public class CarHandler : MonoBehaviour
         rb.linearDamping = 0;
 
         //Stay within the speed limit
-        if (rb.linearVelocity.z >= maxForwardveocity)
+        if (rb.linearVelocity.z >= maxForwardvelocity)
             return;
 
         rb.AddForce(rb.transform.forward * accelerationMultiplier * input.y);
@@ -144,12 +144,12 @@ public class CarHandler : MonoBehaviour
             float speedBaseSteerLimit = rb.linearVelocity.z / 5.0f;
             speedBaseSteerLimit = Mathf.Clamp01(speedBaseSteerLimit);
 
-            rb.AddForce(rb.transform.right * steeringMultiplier * input.x * speedBaseSteerLimit); //code for steeing + steering senstivity
+            rb.AddForce(rb.transform.right * steeringMultiplier * input.x * speedBaseSteerLimit); //code for steering + steering sensitivity
 
             //normalize X velocity
             float normalizedX = rb.linearVelocity.x / maxSteervelocity;
 
-            //Ensure that we dont allow it to get bigger than 1 in magnitued.
+            //Ensure that we dont allow it to get bigger than 1 in magnitude.
             normalizedX = Mathf.Clamp(normalizedX, -1.0f, 1.0f);
 
             rb.linearVelocity = new Vector3(normalizedX * maxSteervelocity, 0, rb.linearVelocity.z);
@@ -166,7 +166,7 @@ public class CarHandler : MonoBehaviour
         if (!isPlayer)
             return;
 
-        carMaxSpeedPercentage = rb.linearVelocity.z / maxForwardveocity;
+        carMaxSpeedPercentage = rb.linearVelocity.z / maxForwardvelocity;
 
         carEngineAS.pitch = carPitchAnimationCurve.Evaluate(carMaxSpeedPercentage);
 
@@ -203,7 +203,7 @@ public class CarHandler : MonoBehaviour
 
     public void SetMaxSpeed(float newMaxSpeed)
     {
-        maxForwardveocity = newMaxSpeed;
+        maxForwardvelocity = newMaxSpeed;
     }
 
     IEnumerator SlowDownTimeCO()

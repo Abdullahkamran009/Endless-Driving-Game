@@ -714,11 +714,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 330585543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5632f0cd6103aff4ea057ed53d4f999d, type: 3}
+  m_Script: {fileID: 11500000, guid: 2955bde0a17e49f4a9df63f3ed1e18bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnldessLevelHandler
   sectionsPrefabs:
-  - {fileID: 6650091611882526251, guid: 533dfa7dcc8ba4d47a871ab2fbcae098, type: 3}
   - {fileID: 3581385159942760335, guid: 0a0cb464f2f091644b4c92914a7abf23, type: 3}
   - {fileID: 6650091611882526251, guid: 533dfa7dcc8ba4d47a871ab2fbcae098, type: 3}
 --- !u!114 &330585550
@@ -759,6 +758,7 @@ MonoBehaviour:
   - {fileID: 3387054179155462591, guid: b947b1c2c3d8af34e8df5beb492fdd3c, type: 3}
   - {fileID: 178519264294061007, guid: e02c82290f5685646bc2f3c566bcff8f, type: 3}
   cinemachineCamera: {fileID: 1823583972}
+  IsMainMenu: 0
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
