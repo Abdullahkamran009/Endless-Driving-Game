@@ -6,7 +6,7 @@ I built this to get better at Unity and C#, mostly by working on the systems tha
 
 <img width="1681" height="825" alt="image" src="https://github.com/user-attachments/assets/ea7e38fc-1794-4a21-a0b8-10957206fc06" />
 
-Check out the [Gameplay on YouTube]([https://youtube.com](https://youtu.be/IWBslhpFA_c)
+Check out the [Gameplay on YouTube](https://youtu.be/IWBslhpFA_c).
 
 - Car movement and handling with Unity physics
 - Endless road that generates itself from random sections, with buildings on the sides
